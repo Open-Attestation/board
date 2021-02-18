@@ -7,6 +7,8 @@
     "@emotion/css": "^11.0.0",
     "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",
+    "netlify-cli": "^3.8.4",
+    "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"
@@ -41,7 +43,6 @@
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-testcafe-community": "^1.1.0",
     "eslint-plugin-testing-library": "^3.10.1",
     "git-cz": "^4.7.6",
     "http-server": "^0.12.3",
@@ -52,18 +53,16 @@
     "prettier": "^2.2.1",
     "react-scripts": "4.0.1",
     "tailwindcss": "^2.0.1",
-    "testcafe": "1.9.4",
     "typescript": "~4.1.2"
   },
   "scripts": {
+    "dev": "netlify dev -p 3001",
     "build": "NODE_ENV=production npm-run-all -s build:css build:js",
     "build:css": "postcss src/tailwind.css -o src/index.css",
     "build:js": "craco build",
     "commit": "git-cz",
     "commit:retry": "npm run commit -- --retry",
     "eject": "react-scripts eject",
-    "integration": "testcafe chrome integration/**/*.spec.ts --ts-config-path ./tsconfig.testcafe.json --app \"BROWSER=none npm run start\"",
-    "integration:headless": "testcafe chrome:headless integration/**/*.spec.ts --ts-config-path ./tsconfig.testcafe.json --app \"http-server ./build --port 3000\" --app-init-delay 5000",
     "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "start": "npm-run-all -p start:*",
@@ -176,16 +175,6 @@
         "rules": {
           "jest/prefer-expect-assertions": "off"
         }
-      },
-      {
-        "files": [
-          "*.spec.ts",
-          "*.spec.tsx"
-        ],
-        "plugins": [
-          "testcafe-community"
-        ],
-        "extends": "plugin:testcafe-community/recommended"
       }
     ]
   },

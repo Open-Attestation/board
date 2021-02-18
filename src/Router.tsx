@@ -1,17 +1,14 @@
 import React, { ReactElement } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Help } from "./views/Help";
 import { Home } from "./views/Home";
 
 export const Router = (): ReactElement => {
   return (
     <BrowserRouter>
+      <nav className="py-3 text-white bg-pink-400 font-bold text-center text-2xl">Board</nav>
       <Switch>
         <Route exact path="/">
           <Home />
-        </Route>
-        <Route path="/help">
-          <Help />
         </Route>
       </Switch>
     </BrowserRouter>
